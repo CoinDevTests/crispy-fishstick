@@ -1,17 +1,19 @@
 name: Update test.html with current time
 
 on:
-  push: # 코드가 푸시될 때마다 작업을 실행
-    branches: [ main ] # main 브랜치에서만 실행
+  push:
+    branches: [ main ]
 
 jobs:
   build:
-    runs-on: ubuntu-latest # 실행할 환경 선택
+    runs-on: ubuntu-latest
     steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v4
     - name: Set up Python # 파이썬 설정
       uses: actions/setup-python@v2
       with:
-        python-version: 3.14
+        python-version: 3.11
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
